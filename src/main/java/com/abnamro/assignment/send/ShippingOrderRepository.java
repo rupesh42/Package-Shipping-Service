@@ -1,4 +1,4 @@
-package com.abnamro.assignment.PackageShippingService.send;
+package com.abnamro.assignment.send;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package com.abnamro.assignment.PackageShippingService.employees;
+package com.abnamro.assignment.employees;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,13 +18,13 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String EmployeeID;
+	private String employeeID;
 
 	@Pattern(regexp = "\\d{4} [A-Z]{2}", message = "Invalid postal code format")
 	private String postCode;
 
 	@NotNull
-	private String StreetName;
+	private String streetName;
 
 	@NotNull
 	private Integer houseNumber;

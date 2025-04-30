@@ -1,10 +1,13 @@
-package com.abnamro.assignment.PackageShippingService.send;
+package com.abnamro.assignment.send;
 
-import java.time.LocalDateTime;
-
-import com.abnamro.assignment.PackageShippingService.employees.Employee;
+import com.abnamro.assignment.employees.Employee;
+import com.abnamro.assignment.utils.EnumValidator;
+import com.abnamro.assignment.utils.OrderStatus;
+import com.abnamro.assignment.utils.PackageSize;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,21 +30,20 @@ public class ShippingOrder {
 	private String packageName;
 
 	@NotNull
-	private String orderId;
-
-	@NotNull
 	private Double packageWeight;
 
-	@NotNull
-	private String packageSize;
+	@Enumerated(EnumType.STRING)
+	private PackageSize packageSize;
 
 	@NotNull
-	private String orderStatus;
+	@EnumValidator(enumClazz = OrderStatus.class, message = "This error is coming from the enum class", groups = {
+			OrderStatus.class })
+	private OrderStatus orderStatus;
 
 	@NotNull
-	private LocalDateTime expectedDeliveryDate;
+	private String expectedDeliveryDate;
 
-	private LocalDateTime actualDeliveryDateTime;
+	private String actualDeliveryDateTime;
 
 	@ManyToOne
 	@NotNull

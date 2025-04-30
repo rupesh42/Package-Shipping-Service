@@ -1,4 +1,4 @@
-package com.abnamro.assignment.PackageShippingService;
+package com.abnamro.assignment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

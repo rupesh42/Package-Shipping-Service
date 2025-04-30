@@ -1,4 +1,4 @@
-package com.abnamro.assignment.PackageShippingService.send;
+package com.abnamro.assignment.send;
 
 import java.util.List;
 
@@ -31,21 +31,25 @@ public class ShippingOrderController {
 		return shippingOrderService.getAllShippingOrders();
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<ShippingOrder> getShippingOrderById(@PathVariable Long id) {
-		ShippingOrder order = shippingOrderService.getShippingOrderById(id);
+	@GetMapping("/{orderId}")
+	public ResponseEntity<ShippingOrder> getShippingOrderById(@PathVariable Long orderId) {
+		ShippingOrder order = shippingOrderService.getShippingOrderById(orderId);
 		return order != null ? ResponseEntity.ok(order) : ResponseEntity.notFound().build();
 	}
 
 	@PutMapping("/updateStatus")
-	public ResponseEntity<Void> updateShippingOrderStatus(@RequestParam Long id, @RequestParam String status) {
-		shippingOrderService.updateShippingOrderStatus(id, status);
-		return ResponseEntity.ok().build();
+	public ResponseEntity<String> updateShippingOrderStatus(@RequestParam Long orderID,
+			@RequestParam String orderStatus) throws Exception {
+		String message = shippingOrderService.updateShippingOrderStatus(orderID, orderStatus);
+		System.err.println("MESSAGE: " + message);
+		return ResponseEntity.ok(message);
 	}
 
 	@PostMapping("/receive")
-	public ResponseEntity<Void> receiveShippingOrder(@RequestParam Long id, @RequestParam String employeeID) {
-		shippingOrderService.receiveShippingOrder(id, employeeID);
-		return ResponseEntity.ok().build();
+	public ResponseEntity<String> receiveShippingOrder(@RequestParam Long orderID,
+			@RequestParam String receiverEmployeeID) throws Exception {
+		shippingOrderService.receiveShippingOrder(orderID, receiverEmployeeID);
+		return ResponseEntity.ok("Order status has been updated to DELIVERED");
 	}
+
 }

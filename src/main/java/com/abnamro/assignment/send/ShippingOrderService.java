@@ -1,4 +1,4 @@
-package com.abnamro.assignment.PackageShippingService.send;
+package com.abnamro.assignment.send;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ public interface ShippingOrderService {
 
 	public ShippingOrder getShippingOrderById(Long id);
 
-	public void updateShippingOrderStatus(Long id, String status);
+	public String updateShippingOrderStatus(Long id, String status) throws Exception;
 
-	public void receiveShippingOrder(Long id, String employeeID);
+	public void receiveShippingOrder(Long id, String employeeID) throws Exception;
 
 }

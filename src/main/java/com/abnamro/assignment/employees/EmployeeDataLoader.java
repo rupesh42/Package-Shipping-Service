@@ -1,17 +1,20 @@
-package com.abnamro.assignment.PackageShippingService.employees;
+package com.abnamro.assignment.employees;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import jakarta.annotation.PostConstruct;
+
 @Component
-public class EmployeeDataLoader implements CommandLineRunner {
+public class EmployeeDataLoader {
 
-	@Autowired
-	private EmployeeService employeeService;
+	private final EmployeeRepository employeeRepository;
 
-	@Override
-	public void run(String... args) throws Exception {
+	public EmployeeDataLoader(EmployeeRepository employeeService) {
+		this.employeeRepository = employeeService;
+	}
+
+	@PostConstruct
+	public void init() throws Exception {
 		Employee employee1 = new Employee();
 		employee1.setEmployeeID("C47240");
 		employee1.setPostCode("1183 KE");
@@ -24,7 +27,7 @@ public class EmployeeDataLoader implements CommandLineRunner {
 		employee2.setStreetName("Krongenberg");
 		employee2.setHouseNumber(20);
 
-		employeeService.saveEmployee(employee1);
-		employeeService.saveEmployee(employee2);
+		employeeRepository.save(employee1);
+		employeeRepository.save(employee2);
 	}
 }
