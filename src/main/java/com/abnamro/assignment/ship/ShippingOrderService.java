@@ -15,6 +15,6 @@ public interface ShippingOrderService {
 
 	public List<ShippingOrder> getShippingOrdersBySenderIDAndStatus(String senderID, String orderStatus);
 
-	public String updateShippingOrderStatus(Long id, String status) throws Exception;
+	public String updateShippingOrderStatus(Long id, String status);
 
 }

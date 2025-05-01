@@ -97,7 +97,7 @@ public class ShippingOrderServiceImpl implements ShippingOrderService {
 	}
 
 	@Override
-	public String updateShippingOrderStatus(Long orderId, @Valid String orderStatus) throws Exception {
+	public String updateShippingOrderStatus(Long orderId, @Valid String orderStatus) {
 
 		ShippingOrder shippingOrder = shippingOrderRepository.findById(orderId)
 				.orElseThrow(() -> new OrderNotFoundException("Order does not exist with id " + orderId));

@@ -14,7 +14,7 @@ public class EmployeeDataLoader {
 	}
 
 	@PostConstruct
-	public void init() throws Exception {
+	public void init() {
 		Employee employee1 = new Employee();
 		employee1.setEmployeeID("C47240");
 		employee1.setPostCode("1183 KE");
