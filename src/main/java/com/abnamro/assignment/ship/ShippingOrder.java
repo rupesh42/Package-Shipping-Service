@@ -1,7 +1,8 @@
-package com.abnamro.assignment.send;
+package com.abnamro.assignment.ship;
+
+import java.time.LocalDate;
 
 import com.abnamro.assignment.employees.Employee;
-import com.abnamro.assignment.utils.EnumValidator;
 import com.abnamro.assignment.utils.OrderStatus;
 import com.abnamro.assignment.utils.PackageSize;
 
@@ -24,10 +25,12 @@ public class ShippingOrder {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long orderId;
 
 	@NotNull
 	private String packageName;
+
+	private String message;
 
 	@NotNull
 	private Double packageWeight;
@@ -36,14 +39,16 @@ public class ShippingOrder {
 	private PackageSize packageSize;
 
 	@NotNull
-	@EnumValidator(enumClazz = OrderStatus.class, message = "This error is coming from the enum class", groups = {
-			OrderStatus.class })
+	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus;
 
 	@NotNull
-	private String expectedDeliveryDate;
+	private LocalDate orderDate;
 
-	private String actualDeliveryDateTime;
+	@NotNull
+	private LocalDate expectedDeliveryDate;
+
+	private LocalDate actualDeliveryDate;
 
 	@ManyToOne
 	@NotNull

@@ -47,7 +47,7 @@ The API needs to be able to do the following:
   - Employee ID of the sender.
   - Optional status-type.
 
-- List the details of an individual package. /1
+- List the details of an individual package.
   - Date of registration.
   - Package status.
   - Date of receipt (when status is DELIVERED)
